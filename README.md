@@ -1,41 +1,37 @@
-# Node.js SDK for Api.ai
+# api-ai-facebook
+Facebook bot sources for Api.ai integration
 
-This plugin allows integrating agents from the [Api.ai](http://api.ai) natural language processing service with your Node.js application.
+## Deploy with Heroku
+Follow [these instructions](https://docs.api.ai/docs/facebook-integration#hosting-fb-messenger-bot-with-heroku).
+Then,  
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-* [Installation](#installation)
-* [Usage](#usage)
+## Deploy with Docker
 
-# Installation
-
-* Install [Node.js](https://nodejs.org/)
-* Install Api.ai SDK with `npm`:
-```shell
-npm install apiai
+```bash
+docker run -it --name fb_bot \
+           -p <your_desired_port>:5000 \
+           -e APIAI_ACCESS_TOKEN="API.AI client access token" \
+           -e FB_PAGE_ACCESS_TOKEN="Facebook Page Access Token" \
+           -e FB_VERIFY_TOKEN="Facebook Verify Token" \
+           -e APIAI_LANG="en" \
+           xvir/api-ai-facebook
 ```
 
-# Usage
-* Create `main.js` file with the following code:
-```javascript
-var apiai = require('apiai');
-
-var app = apiai("<your client access token>");
-
-var request = app.textRequest('<Your text query>', {
-    sessionId: '<unique session id>'
-});
-
-request.on('response', function(response) {
-    console.log(response);
-});
-
-request.on('error', function(error) {
-    console.log(error);
-});
-
-request.end();
-```
-* Run following command.
-```shell
-node main.js
-```
-* Your can find more examples in [`samples`](samples) directory.
+## Note about languages:
+When you deploy the app manually to Heroku, the APIAI_LANG not filled with a value.
+You need to provide language parameter according to your agent settings in the form of two-letters code.
+ 
+ * "en"
+ * "ru"
+ * "de"
+ * "pt"
+ * "pt-BR"
+ * "es"
+ * "fr"
+ * "it"
+ * "ja"
+ * "ko"
+ * "zh-CN"
+ * "zh-HK"
+ * "zh-TW"

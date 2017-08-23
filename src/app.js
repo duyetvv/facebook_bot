@@ -1,6 +1,6 @@
 'use strict';
 
-const apiai = require('./modules/apiai');
+const apiai = require('apiai');
 const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
@@ -9,10 +9,10 @@ const JSONbig = require('json-bigint');
 const async = require('async');
 
 const REST_PORT = (process.env.PORT || 5000);
-const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
+const APIAI_ACCESS_TOKEN = '6e104c0613ec4052a6809afb4ff398ff';
 const APIAI_LANG = process.env.APIAI_LANG || 'en';
-const FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
-const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
+const FB_VERIFY_TOKEN = '123456';
+const FB_PAGE_ACCESS_TOKEN = 'EAAaG7iHuyGIBAG2dqu2UKxUO5EjEZCba4ZB1vgJaee4ZCg1hLQwZCDkiaDPpLvs7FzWSyMDtN14tCWoWU3EPUWQzOXDTzz0HrbAm0FxZA2u0Kk8xughYWOWhhbEc7MWOtcYr0vSyD7KxeqxpwnrjgZAxY0RZAZBGJtlZApw3zjOZACb3gPMZCltTvCI';
 const FB_TEXT_LIMIT = 640;
 
 const FACEBOOK_LOCATION = "FACEBOOK_LOCATION";
@@ -24,7 +24,6 @@ class FacebookBot {
         this.sessionIds = new Map();
         this.messagesDelay = 200;
     }
-
 
     doDataResponse(sender, facebookResponseData) {
         if (!Array.isArray(facebookResponseData)) {

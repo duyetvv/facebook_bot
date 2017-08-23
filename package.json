@@ -1,43 +1,32 @@
 {
-  "name": "apiai",
-  "version": "4.0.3",
-  "description": "Node.js SDK for api.ai",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "directories": {
-    "example": "examples"
-  },
-  "files": [
-    "index.js",
-    "index.d.ts",
-    "module/"
-  ],
+  "name": "api-ai-facebook",
+  "version": "1.1.0",
+  "description": "API.AI Facebook Bot",
+  "main": "src/app.js",
   "scripts": {
-    "build:live": "NODE_ENV=development nodemon --exec ./node_modules/.bin/ts-node -- ./typescript_examples/text_request.ts"
+    "start": "node src/app.js",
+    "test": "mocha",
+    "coverage": "istanbul cover _mocha"
+  },
+  "author": "Danil Skachkov <danil.skachkov@speaktoit.com> (https://api.ai)",
+  "license": "ISC",
+  "dependencies": {
+    "apiai": "^3.0.3",
+    "async": "^2.0.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.13.3",
+    "html-entities": "^1.2.0",
+    "json-bigint": "^0.2.0",
+    "request": "^2.73.0",
+    "uuid": "^3.0.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/api-ai/apiai-nodejs-client.git"
+    "url": "https://github.com/api-ai/api-ai-facebook"
   },
-  "keywords": [
-    "apiai",
-    "NLU",
-    "natural",
-    "language",
-    "understanding"
-  ],
-  "author": "Dmitriy Kuragin",
-  "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/api-ai/api-ai-node-js/issues"
-  },
-  "homepage": "https://github.com/api-ai/api-ai-node-js#readme",
   "devDependencies": {
-    "@types/node": "^7.0.5",
-    "nodemon": "^1.11.0",
-    "ts-node": "^2.1.0",
-    "typing": "^0.1.9",
-    "typings": "^2.0.0",
-    "typescript": "^2.1.6"
+    "rewire": "^2.5.2",
+    "should": "^11.2.0",
+    "supertest": "^3.0.0"
   }
 }
